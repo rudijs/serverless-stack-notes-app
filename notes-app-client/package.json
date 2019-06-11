@@ -15,6 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://notes.rudijs.com --delete",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3AXODSFET74PA --paths '/*'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
